@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # weui-vue-comp
 
 > A Vue.js project
@@ -16,3 +17,7 @@ npm run build
 ```
 
 For detailed explanation on how things work, consult the [docs for vue-loader](http://vuejs.github.io/vue-loader).
+=======
+# weui-comp
+A Vue.js project.  It contains some vue components based on Weui.
+>>>>>>> 092005fed6303b8f4264b5aa9b420b3877886846
