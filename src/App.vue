@@ -26,12 +26,14 @@
     </Dialog>
     <Toast msg='8989' :isShow.sync='isShowToast'></Toast>
     <button @click="isShowToast=true">点击改变toast</button>
+    <Slider :imgList="imgList" sty="width:500px;height:300px;-webkit-animation-duration:6s;"></Slider>
   </div>
 </template>
 
 <script>
 import Dialog from "./components/dialog/dialog";
 import Toast from "./components/toast/toast";
+import Slider from "./components/slider-simple/slider-simple";
 export default {
   name: 'app',
   data () {
@@ -39,7 +41,11 @@ export default {
       msg: 'Welcome to Your Vue.js App',
       message: '我是m页面',
       dialogControl: true,
-      isShowToast: false
+      isShowToast: false,
+      imgList: ['http://img5.imgtn.bdimg.com/it/u=2198746125,2255961738&fm=26&gp=0.jpg',
+      'http://img.zcool.cn/community/01f09e577b85450000012e7e182cf0.jpg@1280w_1l_2o_100sh.jpg',
+      'http://pic19.nipic.com/20120308/4970979_102637717125_2.jpg'
+      ]
     }
   },
   methods: {
@@ -50,7 +56,8 @@ export default {
   },
   components: {
     Dialog,
-    Toast
+    Toast,
+    Slider
   }
 }
 </script>

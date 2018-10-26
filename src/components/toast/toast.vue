@@ -24,7 +24,7 @@ export default {
 	     * 控制toast 显示隐藏
 	     */
 	    isShow: {
-	    	  type: Boolean,
+	    	type: Boolean,
 	      required: false,
 	      default: false
 	    }

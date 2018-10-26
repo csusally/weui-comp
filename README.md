@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 # weui-vue-comp
 
 > A Vue.js project
@@ -20,4 +20,4 @@ For detailed explanation on how things work, consult the [docs for vue-loader](h
 =======
 # weui-comp
 A Vue.js project.  It contains some vue components based on Weui.
->>>>>>> 092005fed6303b8f4264b5aa9b420b3877886846
+

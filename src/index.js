@@ -1,9 +1,11 @@
 import Dialog from './components/dialog/index.js';
 import Toast from './components/toast/index.js';
+import SliderSimple from './components/slider-simple/index.js';
 
 const components = [
   Dialog,
-  Toast
+  Toast,
+  SliderSimple
 ]
 
 const install = function(Vue, opts = {}) {
@@ -20,5 +22,6 @@ if (typeof window !== 'undefined' && window.Vue) {
 export default {
   install,
   Dialog,
-  Toast
+  Toast,
+  SliderSimple
 }
