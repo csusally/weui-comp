@@ -7,8 +7,8 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, './dist'),
     publicPath: '/dist/',
-    filename: 'weui-comp.min.js',
-    library: 'weui-comp',
+    filename: 'ui-comp.min.js',
+    library: 'ui-comp',
     libraryTarget: 'umd',
     umdNamedDefine: true
   },

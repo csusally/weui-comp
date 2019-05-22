@@ -16,14 +16,15 @@
       <li><a href="http://vue-loader.vuejs.org/" target="_blank">vue-loader</a></li>
       <li><a href="https://github.com/vuejs/awesome-vue" target="_blank">awesome-vue</a></li>
     </ul>
-    <Dialog v-show="dialogControl" type="confirm" title="框框"
+    <!-- <Dialog v-show="dialogControl" type="confirm" title="框框"
       @weui-dialog-confirm="handleDialogAction('确定')"
       @weui-dialog-cancel="handleDialogAction('取消')">
       <p>自定义弹窗内容</p>
       <p>hahahaha，快点确定</p>
       <p>hahahaha，快点确定</p>
       <p>hahahaha，快点确定</p>
-    </Dialog>
+    </Dialog> -->
+    <Modal :modalData = 'modalData' :showModal='showModal'></Modal>
     <Toast msg='8989' :isShow.sync='isShowToast'></Toast>
     <button @click="isShowToast=true">点击改变toast</button>
     <Slider :imgList="imgList" sty="width:500px;height:300px;-webkit-animation-duration:6s;"></Slider>
@@ -32,6 +33,7 @@
 
 <script>
 import Dialog from "./components/dialog/dialog";
+import Modal from "./components/modal/modal";
 import Toast from "./components/toast/toast";
 import Slider from "./components/slider-simple/slider-simple";
 export default {
@@ -45,7 +47,22 @@ export default {
       imgList: ['http://img5.imgtn.bdimg.com/it/u=2198746125,2255961738&fm=26&gp=0.jpg',
       'http://img.zcool.cn/community/01f09e577b85450000012e7e182cf0.jpg@1280w_1l_2o_100sh.jpg',
       'http://pic19.nipic.com/20120308/4970979_102637717125_2.jpg'
-      ]
+      ],
+      modalData:{
+        confirmText:'确定',
+        cancelText:'取消',
+        content: 'dsfdasfasdgfdsgsgdfgdf?',
+        confirmColor: 'green',
+        confirmFun: ()=>{
+          // this.confirm();
+          this.showModal = false;
+        },
+        cancelFun: ()=>{
+          console.log('cancel')
+          this.showModal = false;
+        }
+      },
+      showModal: true
     }
   },
   methods: {
@@ -57,7 +74,8 @@ export default {
   components: {
     Dialog,
     Toast,
-    Slider
+    Slider,
+    Modal
   }
 }
 </script>
