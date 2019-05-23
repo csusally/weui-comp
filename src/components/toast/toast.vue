@@ -1,9 +1,9 @@
 <template>
-	<div id="toast" v-show='isShow'>
+	<div id="toast" v-show='show'>
 	    <div class="weui-mask__transparent"></div>
 	    <div class="weui-toast">
 	        <i class="weui-icon__toast"></i>
-	        <p class="weui-toast__content">{{msg}}</p>
+	        <p class="weui-toast__content">{{text}}</p>
 	    </div>
 	</div>
 </template>
@@ -11,40 +11,57 @@
 <script>
 export default {
 	name:'Toast',
-    props: { 
-	    /**
-	     * toast框的内容
-	     */
-	    msg: {
-	      type: String,
-	      required: true,
-	      default: '加载中'
-	    },
-	    /*
-	     * 控制toast 显示隐藏
-	     */
-	    isShow: {
-	    	type: Boolean,
-	      required: false,
-	      default: false
-	    }
-  	},
-  	watch: {
-	    // 如果 `question` 发生改变，这个函数就会运行
-	    isShow: function (current, old) {
-	    	var self = this;
-	    	  console.log('show')
-	      if(current){
-    				setTimeout(function(){
-    					self.$emit('update:isShow', false);
-    				},1000)
-    			}
-	    }
-    },
-    
+	props: { 
+		/**
+		 * toast框的内容
+		 */
+		msg: {
+			type: String,
+			required: false,
+			default: '加载中'
+		},
+		/*
+			* 控制toast 显示隐藏
+			*/
+		isShow: {
+			type: Boolean,
+			required: false,
+			default: false
+		}
+	},
+	data(){
+		return {
+			text: this.msg,
+			show: this.isShow
+		}
+	},
+	// watch: {
+	// 	// 如果 `question` 发生改变，这个函数就会运行
+	// 	isShow: function (current, old) {
+	// 		var self = this;
+	// 			console.log('show')
+	// 		if(current){
+	// 				setTimeout(function(){
+	// 					self.$emit('update:isShow', false);
+	// 				},1000)
+	// 			}
+	// 	}
+	// }, 
+	methods:{
+		showToast(){
+			self.$emit('update:isShow', true);
+		},
+		hideToast(){
+			self.$emit('update:isShow', false);
+		}
+	}
   	
 }
 </script>
+
+<style>
+	/* @import url('../../assets/weui.min.css'); */
+</style>
 
 <style scoped>
 	.weui-toast{
@@ -64,11 +81,11 @@ export default {
 	  margin:22px 0 0;
 	  display:block;
 	}
-	.weui-icon_toast.weui-icon-success-no-circle:before{
+	.weui-icon__toast.weui-icon-success-no-circle:before{
 	  color:#FFFFFF;
 	  font-size:55px;
 	}
-	.weui-icon_toast.weui-loading{
+	.weui-icon__toast.weui-loading{
 	  margin:30px 0 0;
 	  width:38px;
 	  height:38px;

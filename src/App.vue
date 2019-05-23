@@ -1,32 +1,21 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
-    <h1>{{ msg }}</h1>
-    <h2>Essential Links</h2>
-    <ul>
-      <li><a href="https://vuejs.org" target="_blank">Core Docs</a></li>
-      <li><a href="https://forum.vuejs.org" target="_blank">Forum</a></li>
-      <li><a href="https://chat.vuejs.org" target="_blank">Community Chat</a></li>
-      <li><a href="https://twitter.com/vuejs" target="_blank">Twitter</a></li>
-    </ul>
-    <h2>Ecosystem</h2>
-    <ul>
-      <li><a href="http://router.vuejs.org/" target="_blank">vue-router</a></li>
-      <li><a href="http://vuex.vuejs.org/" target="_blank">vuex</a></li>
-      <li><a href="http://vue-loader.vuejs.org/" target="_blank">vue-loader</a></li>
-      <li><a href="https://github.com/vuejs/awesome-vue" target="_blank">awesome-vue</a></li>
-    </ul>
-    <!-- <Dialog v-show="dialogControl" type="confirm" title="框框"
+    <!-- Dialog 對話框 -->
+    <Dialog v-show="dialogControl" type="confirm" title="弹框标题哦" confirmTextColor='red'
       @weui-dialog-confirm="handleDialogAction('确定')"
-      @weui-dialog-cancel="handleDialogAction('取消')">
-      <p>自定义弹窗内容</p>
-      <p>hahahaha，快点确定</p>
-      <p>hahahaha，快点确定</p>
-      <p>hahahaha，快点确定</p>
-    </Dialog> -->
+      @weui-dialog-cancel="handleDialogAction('取消')"> 
+      自定义弹窗内容
+    </Dialog>
+
+    <!-- Modal 彈框 与 对话框类似 -->
     <Modal :modalData = 'modalData' :showModal='showModal'></Modal>
-    <Toast msg='8989' :isShow.sync='isShowToast'></Toast>
-    <button @click="isShowToast=true">点击改变toast</button>
+
+    <!-- toast 提示框 一定时间后消失-->
+    <Toast msg='加载中' :isShow.sync='isShowToast'></Toast>
+    <button @click="isShowToast=true">显示toast</button>
+    <button @click="showToast">showtoast</button>
+
+    <!-- 滑动 -->
     <Slider :imgList="imgList" sty="width:500px;height:300px;-webkit-animation-duration:6s;"></Slider>
   </div>
 </template>
@@ -65,10 +54,15 @@ export default {
       showModal: true
     }
   },
+  mounted(){
+  },
   methods: {
     handleDialogAction (action) {
-      alert(`你刚刚点击了“${action}”`)
+      // alert(`你刚刚点击了“${action}”`)
       this.dialogControl = false
+    },
+    showToast(){
+      this.$toast('我是弹出消息')
     }
   },
   components: {

@@ -16,7 +16,7 @@
 
 <script>
 export default {
-  name:'Modal',
+  name:'Modalbox',
   props: {
     modalData: Object,
     showModal: Boolean

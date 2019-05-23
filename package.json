@@ -1,7 +1,7 @@
 {
   "name": "ui-comp",
   "description": "A Vue.js project.  It contains some vue components based on Weui.",
-  "version": "1.0.2",
+  "version": "1.0.4",
   "author": "wujing",
   "license": "MIT",
   "private": false,

@@ -1,4 +1,85 @@
-<style scoped>
+<template>
+	<div class="js_dialog">
+		<div class="weui-mask"></div>
+		<div class="weui-dialog">
+			<div class="weui-dialog__hd">
+				<div class="weui-dialog__title">{{title}}</div>
+			</div>
+			<div class="weui-dialog__bd"><slot></slot></div>
+			<div class="weui-dialog__ft">
+				<a v-if="type === 'confirm'" href="javascript:;" class="weui-dialog__btn weui-dialog__btn_default" @click="dispathEventAndClose(0)">{{cancelButton}}</a>
+				<a href="javascript:;" class="weui-dialog__btn weui-dialog__btn_primary" @click="dispathEventAndClose(1)" :style="confirmStyle">{{confirmButton}}</a>
+			</div>
+		</div>
+	</div>
+</template>
+
+<script>
+export default {
+	name:'Dialog',
+	props: { 
+		/**
+		 * 对话框类型
+		 * alert: 提示框，只包含确定按钮（默认）
+		 * confirm: 询问框，包含确定和取消按钮
+		 */
+		type: {
+			type: String,
+			required: false,
+			default: 'alert'
+		},
+
+		/**
+		 * 对话框标题
+		 */
+		title: {
+			type: String,
+			required: false
+		},
+
+		/**
+		 * 确定按钮名称
+		 */
+		confirmButton: {
+			type: String,
+			required: false,
+			default: '确定'
+		},
+
+		/**
+		 * 取消按钮名称
+		 */
+		cancelButton: {
+			type: String,
+			required: false,
+			default: '取消'
+		},
+
+		confirmTextColor: {
+			type: String,
+			required: false,
+		}
+
+	},
+	computed:{
+		confirmStyle(){
+			return `color:${this.confirmTextColor}`
+		}
+	},
+
+	methods: {
+		dispathEventAndClose(event) {
+			if(event===1){
+				this.$emit('weui-dialog-confirm');
+				return true;
+			}
+			this.$emit('weui-dialog-cancel')
+		}
+	}
+}
+</script>
+
+<style lang='scss' scoped>
 	.weui-mask{
 	  position:fixed;
 	  z-index:1000;
@@ -6,32 +87,32 @@
 	  right:0;
 	  left:0;
 	  bottom:0;
-	  background:rgba(0, 0, 0, 0.6);
+		background:rgba(0, 0, 0, 0.6);
+		&__transparent{
+			position:fixed;
+			z-index:1000;
+			top:0;
+			right:0;
+			left:0;
+			bottom:0;
+		}
 	}
-	.weui-mask_transparent{
-	  position:fixed;
-	  z-index:1000;
-	  top:0;
-	  right:0;
-	  left:0;
-	  bottom:0;
-	}
-   .weui-dialog{
-	  position:fixed;
-	  z-index:5000;
-	  width:80%;
-	  max-width:300px;
-	  top:50%;
-	  left:50%;
-	  -webkit-transform:translate(-50%, -50%);
-	          transform:translate(-50%, -50%);
-	  background-color:#FFFFFF;
-	  text-align:center;
-	  border-radius:3px;
-	  overflow:hidden;
-	}
-	.weui-dialog__hd{
-	  padding:1.3em 1.6em 0.5em;
+  .weui-dialog{
+		position:fixed;
+		z-index:5000;
+		width:80%;
+		max-width:300px;
+		top:50%;
+		left:50%;
+		-webkit-transform:translate(-50%, -50%);
+						transform:translate(-50%, -50%);
+		background-color:#FFFFFF;
+		text-align:center;
+		border-radius:3px;
+		overflow:hidden;
+		&__hd{
+			padding:1.3em 1.6em 0.5em;
+		}
 	}
 	.weui-dialog__title{
 	  font-weight:400;
@@ -107,77 +188,15 @@
 	}
 	.weui-dialog__btn_primary{
 	  color:#0BB20C;
- 	}
- 	@media screen and (min-width: 1024px){
-	  .weui-dialog{
-	    width:35%;
+	 }
+	@media screen and (min-width: 1024px){
+		.weui-dialog{
+				width:35%;
+		}
 	}
-}
 </style>
 
-<template>
-<div class="js_dialog">
-  <div class="weui-mask"></div>
-  <div class="weui-dialog">
-    <div class="weui-dialog__hd">
-      <div class="weui-dialog__title">{{title}}</div>
-    </div>
-    <div class="weui-dialog__bd"><slot></slot></div>
-    <div class="weui-dialog__ft">
-      <a v-if="type === 'confirm'" href="javascript:;" class="weui-dialog__btn weui-dialog__btn_default" @click="$emit('weui-dialog-cancel')">{{cancelButton}}</a>
-      <a href="javascript:;" class="weui-dialog__btn weui-dialog__btn_primary" @click="$emit('weui-dialog-confirm')">{{confirmButton}}</a>
-    </div>
-  </div>
-</div>
-</template>
+<style lang='scss'  scoped>
 
-<script>
-export default {
-	name:'Dialog',
-    props: { 
-    /**
-     * 对话框类型
-     * alert: 提示框，只包含确定按钮（默认）
-     * confirm: 询问框，包含确定和取消按钮
-     */
-    type: {
-      type: String,
-      required: false,
-      default: 'alert'
-    },
+</style>
 
-    /**
-     * 对话框标题
-     */
-    title: {
-      type: String,
-      required: true
-    },
-
-    /**
-     * 确定按钮名称
-     */
-    confirmButton: {
-      type: String,
-      required: false,
-      default: '确定'
-    },
-
-    /**
-     * 取消按钮名称
-     */
-    cancelButton: {
-      type: String,
-      required: false,
-      default: '取消'
-    }
-
-  },
-
-  // methods: {
-  //   dispathEventAndClose(event) {
-  //     alert(event);
-  //   }
-  // }
-}
-</script>
