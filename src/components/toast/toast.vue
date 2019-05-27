@@ -1,9 +1,9 @@
 <template>
-	<div id="toast" v-show='show'>
+	<div id="toast" v-show='isShow'>
 	    <div class="weui-mask__transparent"></div>
 	    <div class="weui-toast">
 	        <i class="weui-icon__toast"></i>
-	        <p class="weui-toast__content">{{text}}</p>
+	        <p class="weui-toast__content">{{msg}}</p>
 	    </div>
 	</div>
 </template>
@@ -11,48 +11,28 @@
 <script>
 export default {
 	name:'Toast',
-	props: { 
-		/**
-		 * toast框的内容
-		 */
-		msg: {
-			type: String,
-			required: false,
-			default: '加载中'
-		},
-		/*
-			* 控制toast 显示隐藏
-			*/
-		isShow: {
-			type: Boolean,
-			required: false,
-			default: false
-		}
-	},
+	// props: { 
+	// 	/**
+	// 	 * toast框的内容
+	// 	 */
+	// 	msg: {
+	// 		type: String,
+	// 		required: false,
+	// 		default: '加载中'
+	// 	},
+	// 	/*
+	// 		* 控制toast 显示隐藏
+	// 		*/
+	// 	isShow: {
+	// 		type: Boolean,
+	// 		required: false,
+	// 		default: false
+	// 	}
+	// },
 	data(){
 		return {
-			text: this.msg,
-			show: this.isShow
-		}
-	},
-	// watch: {
-	// 	// 如果 `question` 发生改变，这个函数就会运行
-	// 	isShow: function (current, old) {
-	// 		var self = this;
-	// 			console.log('show')
-	// 		if(current){
-	// 				setTimeout(function(){
-	// 					self.$emit('update:isShow', false);
-	// 				},1000)
-	// 			}
-	// 	}
-	// }, 
-	methods:{
-		showToast(){
-			self.$emit('update:isShow', true);
-		},
-		hideToast(){
-			self.$emit('update:isShow', false);
+			msg: '',
+			isShow: false
 		}
 	}
   	

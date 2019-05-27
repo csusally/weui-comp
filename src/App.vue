@@ -13,7 +13,9 @@
     <!-- toast 提示框 一定时间后消失-->
     <Toast msg='加载中' :isShow.sync='isShowToast'></Toast>
     <button @click="isShowToast=true">显示toast</button>
-    <button @click="showToast">showtoast</button>
+    <button @click="showToast">showtoast 2秒消失</button>
+    <button @click="toastshow">showtoast</button>
+    <button @click="toasthide">hidetoast </button>
 
     <!-- 滑动 -->
     <Slider :imgList="imgList" sty="width:500px;height:300px;-webkit-animation-duration:6s;"></Slider>
@@ -63,6 +65,12 @@ export default {
     },
     showToast(){
       this.$toast('我是弹出消息')
+    },
+    toastshow(){
+      this.$showToast('show', 4000)
+    },
+    toasthide(){
+      this.$hideToast()
     }
   },
   components: {
