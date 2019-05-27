@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <!-- Dialog 對話框 -->
-    <Dialog v-show="dialogControl" type="confirm" title="弹框标题哦" confirmTextColor='red'
+    <Dialog v-show="dialogControl" type="confirm" title="弹框标题哦" confirmTextColor='red' 
       @weui-dialog-confirm="handleDialogAction('确定')"
       @weui-dialog-cancel="handleDialogAction('取消')"> 
       自定义弹窗内容
@@ -19,14 +19,15 @@
 
     <!-- 滑动 -->
     <Slider :imgList="imgList" sty="width:500px;height:300px;-webkit-animation-duration:6s;"></Slider>
+
+    <!-- search-bar -->
+    <search-bar></search-bar>
   </div>
 </template>
 
 <script>
-import Dialog from "./components/dialog/dialog";
-import Modal from "./components/modal/modal";
-import Toast from "./components/toast/toast";
 import Slider from "./components/slider-simple/slider-simple";
+import SearchBar from "./components/search-bar/search-bar";
 export default {
   name: 'app',
   data () {
@@ -74,10 +75,8 @@ export default {
     }
   },
   components: {
-    Dialog,
-    Toast,
     Slider,
-    Modal
+    SearchBar
   }
 }
 </script>

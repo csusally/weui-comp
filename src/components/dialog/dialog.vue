@@ -162,6 +162,11 @@ export default {
 	  text-decoration:none;
 	  -webkit-tap-highlight-color:rgba(0, 0, 0, 0);
 	  position:relative;
+		min-width: 50%;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		padding: 0 5px;
+		box-sizing: border-box;
 	}
 	.weui-dialog__btn:active{
 	  background-color:#EEEEEE;
