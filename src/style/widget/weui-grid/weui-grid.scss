@@ -21,10 +21,10 @@
     overflow: hidden;
 
     &:before {
-        .setTopLine(@weuiGridBorderColor);
+        @include setTopLine($weuiGridBorderColor);
     }
     &:after {
-        .setLeftLine(@weuiGridBorderColor);
+        @include setLeftLine($weuiGridBorderColor);
     }
 }
 
@@ -32,24 +32,24 @@
     position: relative;
     float: left;
     padding: 20px 10px;
-    width: 100% / @weuiGridColumnCount;
+    width: 100% / $weuiGridColumnCount;
     box-sizing: border-box;
 
     &:before {
-        .setRightLine(@weuiGridBorderColor);
+        @include setRightLine($weuiGridBorderColor);
     }
     &:after {
-        .setBottomLine(@weuiGridBorderColor);
+        @include setBottomLine($weuiGridBorderColor);
     }
 
     &:active {
-        background-color: @weuiBgColorActive;
+        background-color: $weuiBgColorActive;
     }
 }
 
 .weui-grid__icon {
-    width: @weuiGridIconSize;
-    height: @weuiGridIconSize;
+    width: $weuiGridIconSize;
+    height: $weuiGridIconSize;
     margin: 0 auto;
 
     img {
@@ -66,8 +66,8 @@
 .weui-grid__label {
     display: block;
     text-align: center;
-    color: @weuiTextColorTitle;
-    font-size: @weuiGridFontSize;
+    color: $weuiTextColorTitle;
+    font-size: $weuiGridFontSize;
     white-space: nowrap;
     text-overflow: ellipsis;
     overflow: hidden;
