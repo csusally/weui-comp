@@ -1,9 +1,17 @@
 <template>
   <div id="app">
+    <!-- search-bar -->
+    <h2 class="title">search-bar</h2>
+    <search-bar></search-bar>
+
+    <!-- 滑动 -->
+    <h2 class="title">slider</h2>
+    <Slider :imgList="imgList" sty="-webkit-animation-duration:16s;"></Slider>
+
     <!-- Dialog 對話框 -->
     <Dialog v-show="dialogControl" type="confirm" title="弹框标题哦" confirmTextColor='red' 
       @weui-dialog-confirm="handleDialogAction('确定')"
-      @weui-dialog-cancel="handleDialogAction('取消')"> 
+      @weui-dialog-cancel="handleDialogAction('取消auto')"> 
       自定义弹窗内容
     </Dialog>
 
@@ -11,23 +19,24 @@
     <Modal :modalData = 'modalData' :showModal='showModal'></Modal>
 
     <!-- toast 提示框 一定时间后消失-->
-    <Toast msg='加载中' :isShow.sync='isShowToast'></Toast>
-    <button @click="isShowToast=true">显示toast</button>
+    <h2 class="title">toast 提示框</h2>
     <button @click="showToast">showtoast 2秒消失</button>
     <button @click="toastshow">showtoast</button>
     <button @click="toasthide">hidetoast </button>
 
-    <!-- 滑动 -->
-    <Slider :imgList="imgList" sty="width:500px;height:300px;-webkit-animation-duration:6s;"></Slider>
+    <h2 class="title">load-more</h2>
+    <button>加载数据</button>
+    <load-more></load-more>
+    
+    
 
-    <!-- search-bar -->
-    <search-bar></search-bar>
   </div>
 </template>
 
 <script>
 import Slider from "./components/slider-simple/slider-simple";
 import SearchBar from "./components/search-bar/search-bar";
+import LoadMore from "./components/load-more/load-more";
 export default {
   name: 'app',
   data () {
@@ -68,7 +77,10 @@ export default {
       this.$toast('我是弹出消息')
     },
     toastshow(){
-      this.$showToast('show', 4000)
+      this.$showToast('show');
+      setTimeout(() => {
+        this.toasthide();
+      }, 4000);
     },
     toasthide(){
       this.$hideToast()
@@ -76,7 +88,8 @@ export default {
   },
   components: {
     Slider,
-    SearchBar
+    SearchBar,
+    LoadMore
   }
 }
 </script>
@@ -89,10 +102,18 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+  min-width:500px;
 }
 
 h1, h2 {
   font-weight: normal;
+}
+
+h2.title {
+  margin-top: 50px;
+  text-align: left;
+  color: #42b983;
+  padding: 0 20px;
 }
 
 ul {

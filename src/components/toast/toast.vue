@@ -39,8 +39,8 @@ export default {
 }
 </script>
 
-<style>
-	/* @import url('../../assets/weui.min.css'); */
+<style lang='scss'>
+	@import '../../style/widget/weui-tips/weui-mask';
 </style>
 
 <style scoped>
