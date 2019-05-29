@@ -56,7 +56,7 @@ export default {
 			totalLength: 0,
 			// pickerStyle: `transform: translate3d(0px, 68px, 0px); transition: all 0.3s ease 0s;`,
 			isShow: false,
-			translateTo: 68
+			translateTo: 102
 		}	
 	},
 	computed:{
@@ -69,6 +69,8 @@ export default {
 		this.$nextTick().then(()=>{
 			let dom = this.$refs.picker;
 			let translateY = this.$refs.pickerWrap.style.transform.split(',')[1].trim().slice(0,-2);
+			let totalLength = 34*this.pickerContent.length;
+			this.totalLength = totalLength;
 
 			dom.addEventListener('touchstart',(e)=> {
 				var touch1 = event.targetTouches[0];
@@ -88,13 +90,25 @@ export default {
 			dom.addEventListener('touchend', (e)=> {
 				this.moveDistance = endY-startY;
 				this.translateTo = this.moveDistance + this.translateYOrigin;
-				// console.log(this.moveDistance)
-				if(this.translateTo > 120){
+				console.log(this.translateTo)
+				if(this.translateTo%34 !=0){
+					let flag = 1;
+					if(this.translateTo<0){
+						flag=-1;
+					}
+					if(this.translateTo%34>17){
+						this.translateTo = (parseInt(this.translateTo/34)*flag+1)*34*flag;
+					}else{
+						this.translateTo = parseInt(this.translateTo/34)*34;
+					}
+				}
+
+				if(this.translateTo > 102){
 					this.translateTo = 102
 				}
 
-				if(this.translateTo < 102-this.totalLength){
-					this.translateTo = 102-this.totalLength
+				if(this.translateTo < 102-this.totalLength +34){
+					this.translateTo = 102-this.totalLength +34
 				}
 				this.translateYOrigin = this.translateTo;
 			},false)
@@ -107,8 +121,6 @@ export default {
 		handleEvent(param){
 			this.isShow = false;
 			// 滑动口总高度
-			let totalLength = 34*this.pickerContent;
-			this.totalLength = totalLength;
 			let translateY = this.$refs.pickerWrap.style.transform.split(',')[1].trim().slice(0,-2);
 			console.log((102-translateY)/34)
 			if (param == 1){
