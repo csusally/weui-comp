@@ -51,13 +51,20 @@ ul {
 }
 .slider {
   position: relative;
+  height: 0;
+  padding-bottom: 65%;
+  margin: 0;
 }
 
 #wrap {
-  position: relative;
+  position: absolute;
   overflow: hidden;
   margin: 0 auto;
-  max-height: 400px;
+  height:100%;
+  /* max-height: 700px; */
+  top: 0;
+  left:0;
+  z-index: 1;
 }
 
 #slider {
@@ -71,13 +78,14 @@ ul {
   overflow: hidden;
   display: flex;
   flex-direction: row;
+
 }
 
 #slider li {
   flex: 1;
   text-align: center;
   overflow: hidden;
-  max-height: 400px;
+  /* max-height: 700px; */
 }
 
 #slider li:nth-child(1) {
@@ -201,6 +209,7 @@ ul {
   position: absolute;
   bottom: 5%;
   left: 50%;
+  z-index: 5;
   transform: translateX(-50%);
 }
 
@@ -230,6 +239,5 @@ ul {
   margin: 0;
   width: 100%;
   height: 100%;
-  margin: 0;
 }
 </style>

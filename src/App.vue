@@ -27,8 +27,12 @@
     <h2 class="title">load-more</h2>
     <button>加载数据</button>
     <load-more></load-more>
-    
-    
+
+    <h2>picker</h2>
+    <button @click="showpicker">picker show</button>
+    <button>picker hide</button>
+    <picker ref="picker"></picker>
+
 
   </div>
 </template>
@@ -37,13 +41,14 @@
 import Slider from "./components/slider-simple/slider-simple";
 import SearchBar from "./components/search-bar/search-bar";
 import LoadMore from "./components/load-more/load-more";
+import Picker from "./components/picker/picker";
 export default {
   name: 'app',
   data () {
     return {
       msg: 'Welcome to Your Vue.js App',
       message: '我是m页面',
-      dialogControl: true,
+      dialogControl: false,
       isShowToast: false,
       imgList: ['http://img5.imgtn.bdimg.com/it/u=2198746125,2255961738&fm=26&gp=0.jpg',
       'http://img.zcool.cn/community/01f09e577b85450000012e7e182cf0.jpg@1280w_1l_2o_100sh.jpg',
@@ -63,7 +68,7 @@ export default {
           this.showModal = false;
         }
       },
-      showModal: true
+      showModal: false
     }
   },
   mounted(){
@@ -84,15 +89,23 @@ export default {
     },
     toasthide(){
       this.$hideToast()
+    },
+    showpicker(){
+      this.$refs.picker._data.isShow = true;
     }
   },
   components: {
     Slider,
     SearchBar,
-    LoadMore
+    LoadMore,
+    Picker
   }
 }
 </script>
+
+<style lang="scss">
+  @import './style/base/reset';
+</style>
 
 <style lang="scss">
 #app {
@@ -128,5 +141,13 @@ li {
 
 a {
   color: #42b983;
+}
+
+.show{
+  transform: translate(0, 0);
+}
+
+.hide{
+  transform: translate(0, 100%);
 }
 </style>
