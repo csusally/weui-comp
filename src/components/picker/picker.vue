@@ -26,12 +26,12 @@
         </div>
       </div>
 			<div class="weui-picker__bd multi"  v-if="isMultiCol">
-				<div class="weui-picker__group" v-for="(picker,index) in multiPicker" :key="index">
+				<div class="weui-picker__group" v-for="(picker,index) in multiPicker" :key="index" data-index='index' ref="multi">
           <div class="weui-picker__mask"></div>
           <div class="weui-picker__indicator"></div>
           <div
             class="weui-picker__content"
-            :style='picker.style'
+            :style='multiPickerStyle[index]'
 						ref="pickerWrap"
           >
   					<div v-for="item in picker.content" :key="item.value" class="weui-picker__item weui-picker__item_disabled">{{item.label+`${item.disabled?'(disabled)':''}`}}</div>
@@ -129,23 +129,53 @@ export default {
 								value: 6,
 						}],
 					// moveDistance:0,
-					translateYOrigin: 102,
 					// totalLength: 0,
-					translateTo: 68,
-					style: ''
+					translateYOrigin: 102,
+					translateTo: 68,					
 				},
-			]
+				{
+					content:[
+						{
+								label: '飞机票',
+								value: 0,
+						}, {
+								label: '火车票',
+								value: 1,
+						}, {
+								label: '的士票',
+								value: 2,
+						}, {
+								label: '公交票',
+								disabled: true,
+								value: 3,
+						}, {
+								label: '其他',
+								value: 4,
+						}, {
+								label: '其他1',
+								value: 5,
+						}, {
+								label: '其他2',
+								value: 6,
+						}],
+					// moveDistance:0,
+					// totalLength: 0,
+					translateYOrigin: 102,
+					translateTo: 0,					
+				},
+			],
 		}	
 	},
 	computed:{
 		pickerStyle(){
 			return `transform: translate3d(0px, ${this.translateTo}px, 0px); transition: all 0.3s ease 0s;`
 		},
-		multiPicker(){
+		multiPickerStyle(){
+			let styleArray = [];
 			this.multiPicker.forEach((item,index)=>{
-				item.style = `transform: translate3d(0px, ${item.translateTo}px, 0px); transition: all 0.3s ease 0s;`
+				styleArray[index] = `transform: translate3d(0px, ${item.translateTo}px, 0px); transition: all 0.3s ease 0s;`
 			})
-			return this.multiPicker.concat([]);
+			return styleArray;
 		}
 	},
 	mounted(){
@@ -187,7 +217,8 @@ export default {
 				startY = touchStart.pageY;
 				this.moveDistance = 0;
 				this.translateTo = this.moveDistance + this.translateYOrigin;
-				console.log('start',startY)
+				console.log('start',e)
+				console.log(this.$refs.multi)
 			},false)
 			elem.addEventListener('touchmove', (e)=> {
 				e.preventDefault();
@@ -196,7 +227,7 @@ export default {
 				endY = touchMove.pageY;
 				this.moveDistance = endY-startY;
 				this.translateTo = this.moveDistance + this.translateYOrigin;
-				console.log('move',endY-startY)
+				console.log('move',e)
 			},false)
 			elem.addEventListener('touchend', (e)=> {
 				this.revisePosition();
