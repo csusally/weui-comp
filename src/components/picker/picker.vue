@@ -112,6 +112,28 @@ export default {
 				}
 				this.translateYOrigin = this.translateTo;
 			},false)
+
+			
+			dom.addEventListener('mousewheel',(e)=>{
+				e.preventDefault();
+				if(e.wheelDeltaY>0){
+					console.log('向上')
+					this.translateTo =  this.translateYOrigin+34;
+				}
+				if(e.wheelDeltaY<0){
+					console.log('向下')
+					this.translateTo =  this.translateYOrigin-34;
+				}
+				if(this.translateTo > 102){
+					this.translateTo = 102;
+				}
+				if(this.translateTo < 102-this.totalLength +34){
+					this.translateTo = 102-this.totalLength +34;
+				}
+				this.translateYOrigin = this.translateTo;
+				
+			})
+
 		
 		})
 
@@ -122,9 +144,10 @@ export default {
 			this.isShow = false;
 			// 滑动口总高度
 			let translateY = this.$refs.pickerWrap.style.transform.split(',')[1].trim().slice(0,-2);
+			let itemIndex = (102-translateY)/34;
 			console.log((102-translateY)/34)
 			if (param == 1){
-
+				this.$emit('selectItem',this.pickerContent[itemIndex]);
 			}
 		}
 	}

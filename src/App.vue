@@ -12,7 +12,7 @@
     <Dialog v-show="dialogControl" type="confirm" title="弹框标题哦" confirmTextColor='red' 
       @weui-dialog-confirm="handleDialogAction('确定')"
       @weui-dialog-cancel="handleDialogAction('取消auto')"> 
-      自定义弹窗内容
+      {{dialogContent}}
     </Dialog>
 
     <!-- Modal 彈框 与 对话框类似 -->
@@ -28,10 +28,9 @@
     <button>加载数据</button>
     <load-more></load-more>
 
-    <h2>picker</h2>
+    <h2 class="title">picker</h2>
     <button @click="showpicker">picker show</button>
-    <button>picker hide</button>
-    <picker ref="picker"></picker>
+    <picker ref="picker" @selectItem='selectedItem'></picker>
 
 
   </div>
@@ -46,9 +45,8 @@ export default {
   name: 'app',
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App',
-      message: '我是m页面',
       dialogControl: false,
+      dialogContent: '',
       isShowToast: false,
       imgList: ['http://img5.imgtn.bdimg.com/it/u=2198746125,2255961738&fm=26&gp=0.jpg',
       'http://img.zcool.cn/community/01f09e577b85450000012e7e182cf0.jpg@1280w_1l_2o_100sh.jpg',
@@ -92,6 +90,11 @@ export default {
     },
     showpicker(){
       this.$refs.picker._data.isShow = true;
+    },
+    selectedItem(param){
+      this.dialogControl = true;
+      this.dialogContent = `你确定要选择${param.label}吗?`;
+      console.log(param.label)
     }
   },
   components: {
@@ -116,6 +119,7 @@ export default {
   color: #2c3e50;
   margin-top: 60px;
   min-width:500px;
+  padding: 20px;
 }
 
 h1, h2 {
