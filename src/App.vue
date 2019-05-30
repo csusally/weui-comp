@@ -10,8 +10,8 @@
 
     <!-- Dialog 對話框 -->
     <Dialog v-show="dialogControl" type="confirm" title="弹框标题哦" confirmTextColor='red' 
-      @weui-dialog-confirm="handleDialogAction('确定')"
-      @weui-dialog-cancel="handleDialogAction('取消auto')"> 
+      @weui-dialog-confirm="handleDialogAction(1)"
+      @weui-dialog-cancel="handleDialogAction(0)"> 
       {{dialogContent}}
     </Dialog>
 
@@ -30,6 +30,7 @@
 
     <h2 class="title">picker</h2>
     <button @click="showpicker">picker show</button>
+    <span v-if="dialogItem" style='color:orange;margin-left:20px;'>您的选择为{{dialogItem.label}}</span>
     <picker ref="picker" @selectItem='selectedItem'></picker>
 
 
@@ -47,6 +48,7 @@ export default {
     return {
       dialogControl: false,
       dialogContent: '',
+      dialogItem:'',
       isShowToast: false,
       imgList: ['http://img5.imgtn.bdimg.com/it/u=2198746125,2255961738&fm=26&gp=0.jpg',
       'http://img.zcool.cn/community/01f09e577b85450000012e7e182cf0.jpg@1280w_1l_2o_100sh.jpg',
@@ -80,7 +82,7 @@ export default {
       this.$toast('我是弹出消息')
     },
     toastshow(){
-      this.$showToast('show');
+      this.$showToast('show我是弹出消息我是弹出消息');
       setTimeout(() => {
         this.toasthide();
       }, 4000);
@@ -93,6 +95,7 @@ export default {
     },
     selectedItem(param){
       this.dialogControl = true;
+      this.dialogItem = param;
       this.dialogContent = `你确定要选择${param.label}吗?`;
       console.log(param.label)
     }
@@ -118,7 +121,7 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
-  min-width:500px;
+  min-width:360px;
   padding: 20px;
 }
 

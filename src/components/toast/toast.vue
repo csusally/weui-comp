@@ -2,7 +2,7 @@
 	<div id="toast" v-show='isShow'>
 	    <div class="weui-mask__transparent"></div>
 	    <div class="weui-toast">
-	        <i class="weui-icon__toast"></i>
+	        <i class="weui-icon__toast weui-icon-success-no-circle"></i>
 	        <p class="weui-toast__content">{{msg}}</p>
 	    </div>
 	</div>
@@ -11,24 +11,6 @@
 <script>
 export default {
 	name:'Toast',
-	// props: { 
-	// 	/**
-	// 	 * toast框的内容
-	// 	 */
-	// 	msg: {
-	// 		type: String,
-	// 		required: false,
-	// 		default: '加载中'
-	// 	},
-	// 	/*
-	// 		* 控制toast 显示隐藏
-	// 		*/
-	// 	isShow: {
-	// 		type: Boolean,
-	// 		required: false,
-	// 		default: false
-	// 	}
-	// },
 	data(){
 		return {
 			msg: '',
@@ -39,25 +21,30 @@ export default {
 }
 </script>
 
+
+
+<style lang='scss'>
+	// @import '../../style/widget/weui-tips/weui-toast';
+</style>
+
 <style lang='scss'>
 	@import '../../style/widget/weui-tips/weui-mask';
 </style>
-
 <style scoped>
 	.weui-toast{
 	  position:fixed;
 	  z-index:5000;
-	  width:14em;
+	  width:7.6em;
 	  min-height:4em;
-	  bottom:20%;
+	  top:80%;
 	  left:50%;
-	  margin-left:-7em;
+	  margin-left:-3.8em;
 	  background:rgba(17, 17, 17, 0.7);
 	  text-align:center;
 	  border-radius:5px;
 	  color:#FFFFFF;
 	}
-	.weui-icon_toast{
+	/* .weui-icon_toast{
 	  margin:22px 0 0;
 	  display:block;
 	}
@@ -84,5 +71,5 @@ export default {
 	  right:0;
 	  left:0;
 	  bottom:0;
-	}
+	} */
 </style>
