@@ -83,9 +83,9 @@ export default {
     },
     toastshow(){
       this.$showToast('show我是弹出消息我是弹出消息');
-      setTimeout(() => {
-        this.toasthide();
-      }, 4000);
+      // setTimeout(() => {
+      //   this.toasthide();
+      // }, 4000);
     },
     toasthide(){
       this.$hideToast()
