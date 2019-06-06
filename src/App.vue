@@ -28,12 +28,19 @@
     <button>加载数据</button>
     <load-more></load-more>
 
+    <!-- picker -->
     <h2 class="title">picker</h2>
     <button @click="showpicker">picker show</button>
     <span v-if="dialogItem" style='color:orange;margin-left:20px;'>您的选择为{{dialogItem.label}}</span>
     <picker ref="picker" @selectItem='selectedItem'></picker>
 
 
+    <h2 class="title">switch</h2>
+    <switch-input></switch-input>
+
+    <h2 class="title">check</h2>
+    <check checktype='checkbox'></check>
+    <text-input></text-input>
   </div>
 </template>
 
@@ -42,6 +49,9 @@ import Slider from "./components/slider-simple/slider-simple";
 import SearchBar from "./components/search-bar/search-bar";
 import LoadMore from "./components/load-more/load-more";
 import Picker from "./components/picker/picker";
+import SwitchInput from "./components/input/switch/switchInput";
+import check from "./components/input/check/check";
+import TextInput from "./components/input/textinput/textinput";
 export default {
   name: 'app',
   data () {
@@ -104,7 +114,10 @@ export default {
     Slider,
     SearchBar,
     LoadMore,
-    Picker
+    Picker,
+    SwitchInput,
+    check,
+    TextInput
   }
 }
 </script>

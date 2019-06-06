@@ -239,5 +239,8 @@ ul {
   margin: 0;
   width: 100%;
   height: 100%;
+  display: block;
+  /* vertical-align: top;   */
+  /* 行内元素 */
 }
 </style>

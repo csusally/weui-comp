@@ -24,11 +24,11 @@
     .weui-cell__bd{
         &:after{
             content: " ";
-            .setArrow(right, 8px, #B2B2B2, 2px);
+            @include setArrow(right, 8px, #B2B2B2, 2px);
 
             position: absolute;
             top: 50%;
-            right: @weuiCellGapH;
+            right: $weuiCellGapH;
             margin-top: -5px;
         }
     }
@@ -41,36 +41,36 @@
     background-color: transparent;
     width: 100%;
     font-size: inherit;
-    height: @weuiCellHeight;
-    line-height: @weuiCellHeight;
+    height: $weuiCellHeight;
+    line-height: $weuiCellHeight;
     position: relative;
     z-index: 1;
-    padding-left: @weuiCellGapH;
+    padding-left: $weuiCellGapH;
 }
 
 .weui-cell_select-before {
-    padding-right:@weuiCellGapH;
+    padding-right:$weuiCellGapH;
     .weui-select{
-        width:@weuiCellLabelWidth;
+        width:$weuiCellLabelWidth;
         box-sizing: border-box;
     }
     .weui-cell__hd {
         position:relative;
         &:after {
-            .setRightLine(@weuiCellBorderColor);
+            @include setRightLine($weuiCellBorderColor);
         }
         &:before{
             content: " ";
-            .setArrow(right, 8px, #B2B2B2, 2px);
+            @include setArrow(right, 8px, #B2B2B2, 2px);
 
             position: absolute;
             top: 50%;
-            right: @weuiCellGapH;
+            right: $weuiCellGapH;
             margin-top: -5px;
         }
     }
     .weui-cell__bd {
-        padding-left:@weuiCellGapH;
+        padding-left:$weuiCellGapH;
         &:after{
             display:none;
         }
@@ -78,7 +78,7 @@
 }
 
 .weui-cell_select-after {
-    padding-left:@weuiCellGapH;
+    padding-left:$weuiCellGapH;
     .weui-select {
         padding-left:0;
     }

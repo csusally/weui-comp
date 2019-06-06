@@ -20,20 +20,20 @@
     position: relative;
     background-color: #FFFFFF;
     &:before{
-        .setTopLine(@weuiCellBorderColor);
+        @include setTopLine($weuiCellBorderColor);
     }
     &:after{
-        .setBottomLine(@weuiCellBorderColor);
+        @include setBottomLine($weuiCellBorderColor);
     }
 }
 .weui-form-preview__hd{
     position: relative;
-    padding: @weuiCellGapV;
+    padding: $weuiCellGapV;
     text-align: right;
     line-height: 2.5em;
     &:after{
-        .setBottomLine(@weuiCellBorderColor);
-        left: @weuiCellGapH;
+        @include setBottomLine($weuiCellBorderColor);
+        left: $weuiCellGapH;
     }
     .weui-form-preview__value{
         font-style: normal;
@@ -41,10 +41,10 @@
     }
 }
 .weui-form-preview__bd{
-    padding: @weuiCellGapV;
+    padding: $weuiCellGapV;
     font-size: .9em;
     text-align: right;
-    color: @weuiTextColorDesc;
+    color: $weuiTextColorDesc;
     line-height: 2;
 }
 .weui-form-preview__ft{
@@ -52,7 +52,7 @@
     line-height: 50px;
     display: flex;
     &:before {
-        .setTopLine(@weuiDialogLineColor);
+        @include setTopLine($weuiDialogLineColor);
     }
 }
 .weui-form-preview__item{
@@ -62,7 +62,7 @@
     float: left;
     margin-right: 1em;
     min-width: 4em;
-    color: @weuiTextColorDesc;
+    color: $weuiTextColorDesc;
     text-align: justify;
     text-align-last: justify;
 }
@@ -76,9 +76,9 @@
     position: relative;
     display: block;
     flex: 1;
-    color: @weuiDialogLinkColor;
+    color: $weuiDialogLinkColor;
     text-align: center;
-    .setTapColor();
+    @include setTapColor();
     button&{
         background-color: transparent;
         border: 0;
@@ -87,10 +87,10 @@
         font-size: inherit;
     }
     &:active {
-        background-color: @weuiDialogLinkActiveBc;
+        background-color: $weuiDialogLinkActiveBc;
     }
     &:after {
-        .setLeftLine(@weuiDialogLineColor);
+        @include setLeftLine($weuiDialogLineColor);
     }
     &:first-child {
         &:after {
@@ -99,8 +99,8 @@
     }
 }
 .weui-form-preview__btn_default {
-    color: @weuiTextColorTitle;
+    color: $weuiTextColorTitle;
 }
 .weui-form-preview__btn_primary {
-    color: @weuiLinkColorDefault;
+    color: $weuiLinkColorDefault;
 }

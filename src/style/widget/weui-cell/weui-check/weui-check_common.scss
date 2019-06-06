@@ -17,7 +17,7 @@
 @import "../../../base/fn";
 
 .weui-check__label {
-    .setTapColor();
+    @include setTapColor();
     &:active {
         background-color: #ECECEC;
     }

@@ -16,33 +16,32 @@
 
 @import "../../base/fn";
 
-.weui-cell_access {
-    .setTapColor();
-    color: inherit;
-    &:active {
-        background-color: #ECECEC;
-    }
-    .weui-cell__ft {
-        padding-right: 16px;
+.weui-cell_swiped {
+    display: block;
+    padding: 0;
+    > .weui-cell__bd {
         position: relative;
-        &:after {
-            content: " ";
-            .setArrow(right, 8px, #B2B2B2, 2px);
-            position: absolute;
-            top: 50%;
-            margin-top: -5px;
-            right: 0;
-        }
+        z-index: 1;
+        background-color: #FFFFFF;
+    }
+    > .weui-cell__ft {
+        position: absolute;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        display: flex;
+        color: #FFFFFF;
     }
 }
-.weui-cell_link{
-    color: @weuiLinkColorDefault;
-    font-size: 17px;
-
-    // 由于weui-cell:first-child的:before为隐藏，所以这里要重新显示出来
-    &:first-child{
-        &:before{
-            display: block;
-        }
-    }
+.weui-swiped-btn {
+    display: block;
+    padding: $weuiCellGapV 1em;
+    line-height: $weuiCellLineHeight;
+    color: inherit;
+}
+.weui-swiped-btn_default {
+    background-color: $weuiBgColorDefault;
+}
+.weui-swiped-btn_warn {
+    background-color: $weuiColorWarn;
 }
